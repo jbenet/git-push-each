@@ -1,0 +1,28 @@
+#!/bin/sh
+
+usage() {
+	echo "usage: $0 [--clean] <remote> <branch-prefix>"
+	echo "push each commit in current branch individually"
+	exit 1
+}
+
+# defaults
+remote="origin"
+prefix="gpi-"
+
+if [ $# -gt 1 ]; then
+	remote=$1
+	shift
+fi
+
+if [ $# -gt 0 ]; then
+	prefix=$1
+	shift
+fi
+
+for line in $(egrep -wo [0-9a-f]{40})
+do
+	spec="$line:refs/heads/$prefix$line"
+	echo "git push $remote $spec"
+	git push "$remote" "$spec"
+done
