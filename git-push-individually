@@ -37,8 +37,11 @@ done
 
 # clean up mode
 if test "z$mode" = "z--clean"; then
-	# echo 'git branch -r | egrep -wo "$remote/($prefix-[0-9a-f]{40})"'
-	echo "cleanup not yet implemented"
+	spec="($prefix[0-9a-f]{40})"
+	for line in $(git branch -r | egrep -wo "$remote/$spec" | egrep -o "$spec")
+	do
+		git push "$remote" ":$line"
+	done
 	exit 0
 fi
 
