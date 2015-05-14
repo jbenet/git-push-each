@@ -9,17 +9,38 @@ usage() {
 # defaults
 remote="origin"
 prefix="gpi-"
+mode=""
 
-if [ $# -gt 1 ]; then
-	remote=$1
-	shift
+while [ $# -gt 0 ]; do
+	# get options
+	arg="$1"
+	case "$arg" in
+	--clean)
+		mode=--clean
+		shift ;;
+	--*)
+		die "$(eval_gettext "unrecognised option: '\$arg'")" ;;
+	esac
+
+	# get args
+	case "$#" in
+	2)
+		remote=$1
+		shift ;;
+	1)
+		prefix=$1
+		shift ;;
+	esac
+done
+
+# clean up mode
+if test "z$mode" = "z--clean"; then
+	# echo 'git branch -r | egrep -wo "$remote/($prefix-[0-9a-f]{40})"'
+	echo "cleanup not yet implemented"
+	exit 0
 fi
 
-if [ $# -gt 0 ]; then
-	prefix=$1
-	shift
-fi
-
+# push mode
 for line in $(egrep -wo [0-9a-f]{40})
 do
 	spec="$line:refs/heads/$prefix$line"
