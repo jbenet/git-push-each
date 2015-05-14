@@ -1,0 +1,70 @@
+#!/bin/sh
+
+usage="USAGE
+    $0 [--clean] <remote> <branch-prefix>
+    push each commit from stdin to its own branch.
+
+OPTIONS
+    --clean   delete all branches matching pattern:
+              <branch-prefix><hash>
+
+EXAMPLE
+    > git cherry master | git push-each
+    > git branch -r
+    origin/gpi-18c4051fc502da15c3c279c37630f6d152ad6b3d
+    origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+    origin/master
+
+    > git push-each --clean
+    > git branch -r
+    origin/master"
+
+# defaults
+remote="origin"
+prefix="gpi-"
+mode=""
+
+while [ $# -gt 0 ]; do
+	# get options
+	arg="$1"
+	case "$arg" in
+	--help)
+		echo "$usage"
+		exit 0 ;;
+	--clean)
+		mode=--clean
+		shift ;;
+	--*)
+		die "$(eval_gettext "unrecognised option: '\$arg'")" ;;
+	*)
+		# get args
+		case "$#" in
+		2)
+			remote=$1
+			shift
+			prefix=$1
+			shift ;;
+		1)
+			remote=$1
+			shift ;;
+		esac ;;
+	esac
+done
+
+# clean up mode
+if test "z$mode" = "z--clean"; then
+	spec="($prefix[0-9a-f]{40})"
+	for line in $(git branch -r | egrep -wo "$remote/$spec" | egrep -o "$spec")
+	do
+		git push "$remote" ":$line"
+	done
+	exit 0
+fi
+
+# push mode
+for line in $(egrep -wo [0-9a-f]{40})
+do
+	spec="$line:refs/heads/$prefix$line"
+	echo "git push $remote $spec"
+	git push "$remote" "$spec"
+done
