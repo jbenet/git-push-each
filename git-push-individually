@@ -20,16 +20,18 @@ while [ $# -gt 0 ]; do
 		shift ;;
 	--*)
 		die "$(eval_gettext "unrecognised option: '\$arg'")" ;;
-	esac
-
-	# get args
-	case "$#" in
-	2)
-		remote=$1
-		shift ;;
-	1)
-		prefix=$1
-		shift ;;
+	*)
+		# get args
+		case "$#" in
+		2)
+			remote=$1
+			shift
+			prefix=$1
+			shift ;;
+		1)
+			remote=$1
+			shift ;;
+		esac ;;
 	esac
 done
 
