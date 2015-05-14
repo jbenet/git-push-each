@@ -1,2 +1,2 @@
 #!/bin/sh
-cp git-push-individually /usr/local/bin/.
+cp git-push-each /usr/local/bin/.

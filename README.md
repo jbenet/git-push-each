@@ -1,4 +1,4 @@
-# git-push-individually
+# git-push-each
 
 Push all the commits in a branch to their own branch, one commit at a time! \o/
 
@@ -11,17 +11,17 @@ Because sometimes you need to trick Github and CI servers to test every commit i
 ## Install
 
 ```
-git clone https://github.com/jbenet/git-push-individually
-cd git-push-individually
-mv git-push-individually /usr/local/bin/.
+git clone https://github.com/jbenet/git-push-each
+cd git-push-each
+mv git-push-each /usr/local/bin/.
 ```
 
 ## Usage
 
 ```
-> git push-individually --help
+> git push-each --help
 USAGE
-    ./git-push-individually [--clean] <remote> <branch-prefix>
+    ./git-push-each [--clean] <remote> <branch-prefix>
     push each commit from stdin to its own branch.
 
 OPTIONS
@@ -29,18 +29,18 @@ OPTIONS
               <branch-prefix><hash>
 
 EXAMPLE
-    > git cherry master | git push-individually
+    > git cherry master | git push-each
     > git branch -r
     origin/gpi-18c4051fc502da15c3c279c37630f6d152ad6b3d
     origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
     origin/master
 
-    > git push-individually --clean
+    > git push-each --clean
     > git branch -r
     origin/master
 ```
 
-### git push-individually
+### git push-each
 
 ```sh
 # say you're working on a branch
@@ -53,7 +53,7 @@ EXAMPLE
 + d603d44109832caf9172fcd256382f78f5113d10
 
 # we can push each of those commits to its own branch
-> git cherry master | git push-individually
+> git cherry master | git push-each
 git push origin 90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda:refs/heads/gpi-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
 ...
 git push origin 22ac071150daf8994f4891d57caeef3b4caf2571:refs/heads/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
@@ -77,12 +77,12 @@ Your pull request could now look like this:
 
 Oh yeah.
 
-### git push-individually --clean
+### git push-each --clean
 
 You can cleanup left-over branches in the remote with
 
 ```
-git push-individually --clean
+git push-each --clean
 ```
 
 This will delete any branches hanging around.
