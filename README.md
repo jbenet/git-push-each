@@ -67,7 +67,6 @@ git push origin d603d44109832caf9172fcd256382f78f5113d10:refs/heads/gpi-d603d441
   origin/gpi-4142467492fec580ed8a20bf7193b350e8025bfe
   origin/gpi-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
   origin/master
-```
 
 # now, they will _each_ trigger a hook.
 ```
