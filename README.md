@@ -16,6 +16,28 @@ mv git-push-individually /usr/local/bin/.
 
 ## Usage
 
+```
+> git push-individually --help
+USAGE
+    ./git-push-individually [--clean] <remote> <branch-prefix>
+    push each commit from stdin to its own branch.
+
+OPTIONS
+    --clean   delete all branches matching pattern:
+              <branch-prefix><hash>
+
+EXAMPLE
+    > git cherry master | git push-individually
+    > git branch -r
+    origin/gpi-18c4051fc502da15c3c279c37630f6d152ad6b3d
+    origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+    origin/master
+
+    > git push-individually --clean
+    > git branch -r
+    origin/master
+```
+
 ### git push-individually
 
 ```sh
