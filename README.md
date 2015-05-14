@@ -14,3 +14,42 @@ cd git-push-individually
 mv git-push-individually /usr/local/bin/.
 ```
 
+## Usage
+
+### git push-individually
+
+```sh
+# say you're working on a branch
+> git checkout -b feat
+
+# that has some new commits
+> git cherry master
++ 90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
++ 22ac071150daf8994f4891d57caeef3b4caf2571
++ d603d44109832caf9172fcd256382f78f5113d10
+
+# we can push each of those commits to its own branch
+> git cherry master | git push-individually
+git push origin 90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda:refs/heads/gpi-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
+...
+git push origin 22ac071150daf8994f4891d57caeef3b4caf2571:refs/heads/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+...
+git push origin d603d44109832caf9172fcd256382f78f5113d10:refs/heads/gpi-d603d44109832caf9172fcd256382f78f5113d10
+...
+
+# check out the pushed branches
+> git branch -r
+  origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+  origin/gpi-4142467492fec580ed8a20bf7193b350e8025bfe
+  origin/gpi-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
+  origin/master
+```
+
+# now, they will _each_ trigger a hook.
+```
+
+Your pull request could now look like this:
+
+![]()
+
+Oh yeah.
