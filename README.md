@@ -75,3 +75,24 @@ Your pull request could now look like this:
 ![]()
 
 Oh yeah.
+
+### git push-individually --clean
+
+You can cleanup left-over branches in the remote with
+
+```
+git push-individually --clean
+```
+
+This will delete any branches hanging around.
+
+**Warning:** `--clean` does `git push -f <remote> :<branch-prefix><hash>`, so be careful with the prefix.
+
+## Arguments
+
+- `<remote>` specify the remote
+- `<branch-prefix>` specify a branch prefix
+
+## License
+
+MIT
