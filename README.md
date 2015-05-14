@@ -1,8 +1,16 @@
 # git-push-individually
 
-Push your branches to a remote one commit at a time! \o/
-Much inefficient. Such slow!
+Push all the commits in a branch to their own branch, one commit at a time! \o/
 
-## Why?
+### What, Why!?
 
-Because sometimes you need to trick CI servers to testing every commit individually.
+Because sometimes you need to trick Github and CI servers to test every commit individually. The benefit is nice, per-commit indicators.
+
+## Install
+
+```
+git clone https://github.com/jbenet/git-push-individually
+cd git-push-individually
+mv git-push-individually /usr/local/bin/.
+```
+
