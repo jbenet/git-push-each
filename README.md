@@ -6,6 +6,8 @@ Push all the commits in a branch to their own branch, one commit at a time! \o/
 
 Because sometimes you need to trick Github and CI servers to test every commit individually. The benefit is nice, per-commit indicators.
 
+![](https://www.evernote.com/l/AMbQvZNfWtFAX5999ivsbMMlT66mCv9xk0AB/image.png)
+
 ## Install
 
 ```
@@ -72,7 +74,7 @@ git push origin d603d44109832caf9172fcd256382f78f5113d10:refs/heads/gpi-d603d441
 
 Your pull request could now look like this:
 
-![]()
+![](https://www.evernote.com/l/AMap5-S_LP1AzYOrUYdjOCqRCrbAksiwQXYB/image.png)
 
 Oh yeah.
 
