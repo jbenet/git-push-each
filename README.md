@@ -31,8 +31,8 @@ OPTIONS
 EXAMPLE
     > git cherry master | git push-each
     > git branch -r
-    origin/gpi-18c4051fc502da15c3c279c37630f6d152ad6b3d
-    origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+    origin/gpe-18c4051fc502da15c3c279c37630f6d152ad6b3d
+    origin/gpe-22ac071150daf8994f4891d57caeef3b4caf2571
     origin/master
 
     > git push-each --clean
@@ -54,18 +54,18 @@ EXAMPLE
 
 # we can push each of those commits to its own branch
 > git cherry master | git push-each
-git push origin 90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda:refs/heads/gpi-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
+git push origin 90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda:refs/heads/gpe-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
 ...
-git push origin 22ac071150daf8994f4891d57caeef3b4caf2571:refs/heads/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+git push origin 22ac071150daf8994f4891d57caeef3b4caf2571:refs/heads/gpe-22ac071150daf8994f4891d57caeef3b4caf2571
 ...
-git push origin d603d44109832caf9172fcd256382f78f5113d10:refs/heads/gpi-d603d44109832caf9172fcd256382f78f5113d10
+git push origin d603d44109832caf9172fcd256382f78f5113d10:refs/heads/gpe-d603d44109832caf9172fcd256382f78f5113d10
 ...
 
 # check out the pushed branches
 > git branch -r
-  origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
-  origin/gpi-4142467492fec580ed8a20bf7193b350e8025bfe
-  origin/gpi-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
+  origin/gpe-22ac071150daf8994f4891d57caeef3b4caf2571
+  origin/gpe-4142467492fec580ed8a20bf7193b350e8025bfe
+  origin/gpe-90add39c1c5d24a5cdf7bfc8fe3ccf9ce847ddda
   origin/master
 
 # now, they will _each_ trigger a hook.

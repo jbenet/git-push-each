@@ -14,8 +14,8 @@ OPTIONS
 EXAMPLE
     > git cherry master | git push-each
     > git branch -r
-    origin/gpi-18c4051fc502da15c3c279c37630f6d152ad6b3d
-    origin/gpi-22ac071150daf8994f4891d57caeef3b4caf2571
+    origin/gpe-18c4051fc502da15c3c279c37630f6d152ad6b3d
+    origin/gpe-22ac071150daf8994f4891d57caeef3b4caf2571
     origin/master
 
     > git push-each --clean
@@ -24,7 +24,7 @@ EXAMPLE
 
 # defaults
 remote="origin"
-prefix="gpi-"
+prefix="gpe-"
 clean=0
 dryrun=0
 
