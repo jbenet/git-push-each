@@ -89,7 +89,12 @@ This will delete any branches hanging around.
 
 **Warning:** `--clean` does `git push -f <remote> :<branch-prefix><hash>`, so be careful with the prefix.
 
-## Arguments
+### Options
+
+- `--clean` removes the branches in the remote
+- `--dry-run` prints out the commands to issue but does not run them
+
+### Arguments
 
 - `<remote>` specify the remote
 - `<branch-prefix>` specify a branch prefix

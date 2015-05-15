@@ -8,6 +8,9 @@ OPTIONS
     --clean   delete all branches matching pattern:
               <branch-prefix><hash>
 
+    --dry-run print out the commands to issue, but
+              do not run them. has no effect.
+
 EXAMPLE
     > git cherry master | git push-each
     > git branch -r
@@ -22,7 +25,8 @@ EXAMPLE
 # defaults
 remote="origin"
 prefix="gpi-"
-mode=""
+clean=0
+dryrun=0
 
 while [ $# -gt 0 ]; do
 	# get options
@@ -32,7 +36,10 @@ while [ $# -gt 0 ]; do
 		echo "$usage"
 		exit 0 ;;
 	--clean)
-		mode=--clean
+		clean=1
+		shift ;;
+	--dry-run)
+		dryrun=1
 		shift ;;
 	--*)
 		die "$(eval_gettext "unrecognised option: '\$arg'")" ;;
@@ -52,11 +59,14 @@ while [ $# -gt 0 ]; do
 done
 
 # clean up mode
-if test "z$mode" = "z--clean"; then
+if [ $clean -eq 1 ]; then
 	spec="($prefix[0-9a-f]{40})"
 	for line in $(git branch -r | egrep -wo "$remote/$spec" | egrep -o "$spec")
 	do
+	echo "git push $remote :$line"
+	if [ $dryrun -eq 0 ]; then
 		git push "$remote" ":$line"
+	fi
 	done
 	exit 0
 fi
@@ -66,5 +76,7 @@ for line in $(egrep -wo [0-9a-f]{40})
 do
 	spec="$line:refs/heads/$prefix$line"
 	echo "git push $remote $spec"
-	git push "$remote" "$spec"
+	if [ $dryrun -eq 0 ]; then
+		git push "$remote" "$spec"
+	fi
 done
