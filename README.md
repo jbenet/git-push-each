@@ -13,7 +13,7 @@ Because sometimes you need to trick Github and CI servers to test every commit i
 ```
 git clone https://github.com/jbenet/git-push-each
 cd git-push-each
-mv git-push-each /usr/local/bin/.
+sudo mv git-push-each $(git --exec-path)
 ```
 
 ## Usage
