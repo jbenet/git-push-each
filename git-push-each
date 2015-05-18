@@ -1,8 +1,16 @@
 #!/bin/sh
 
 usage="USAGE
-    $0 [--clean] <remote> <branch-prefix>
+    $0 [--clean] [<remote> [<branch-prefix>]]
     push each commit from stdin to its own branch.
+
+DESCRIPTION
+    Read commit <sha1> hashes from stdin, one per line, and
+    for each one, push a branch to <remote>.
+    The branch is named following the <branch-prefix>-<sha1>
+    pattern and points to <sha1>.
+    By default <branch-prefix> is 'gpe-' and <remote> is
+    'origin'.
 
 OPTIONS
     --clean   delete all branches matching pattern:
