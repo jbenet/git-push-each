@@ -74,6 +74,9 @@ while [ $# -gt 0 ]; do
 	esac
 done
 
+test -n "$remote" || die "Empty <remote> argument\n$usage"
+test -n "$prefix" || die "Empty <branch-prefix> argument\n$usage"
+
 # clean up mode
 if [ $clean -eq 1 ]; then
 	spec="($prefix[0-9a-f]{40})"
