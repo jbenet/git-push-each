@@ -79,7 +79,7 @@ test -n "$prefix" || die "Empty <branch-prefix> argument\n$usage"
 
 # clean up mode
 if [ $clean -eq 1 ]; then
-	spec="($prefix[0-9a-f]{40})"
+	spec="($prefix[0-9a-fA-F]{40})"
 	for line in $(git branch -r | egrep -wo "$remote/$spec" | egrep -o "$spec")
 	do
 	echo "git push $remote :$line"
@@ -91,7 +91,7 @@ if [ $clean -eq 1 ]; then
 fi
 
 # push mode
-for line in $(egrep -wo [0-9a-f]{40})
+for line in $(egrep -wo [0-9a-fA-F]{40})
 do
 	spec="$line:refs/heads/$prefix$line"
 	echo "git push $remote $spec"
