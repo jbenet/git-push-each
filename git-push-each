@@ -68,6 +68,8 @@ while [ $# -gt 0 ]; do
 		1)
 			remote=$1
 			shift ;;
+		*)
+			die "Too many arguments: '$@'\n$usage" ;;
 		esac ;;
 	esac
 done
