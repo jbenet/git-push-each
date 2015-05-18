@@ -84,7 +84,7 @@ if [ $clean -eq 1 ]; then
 	do
 	echo "git push $remote :$line"
 	if [ $dryrun -eq 0 ]; then
-		git push "$remote" ":$line"
+		git push "$remote" ":$line" || die "Could not git push '$remote' ':$line'"
 	fi
 	done
 	exit 0
@@ -96,6 +96,6 @@ do
 	spec="$line:refs/heads/$prefix$line"
 	echo "git push $remote $spec"
 	if [ $dryrun -eq 0 ]; then
-		git push "$remote" "$spec"
+		git push "$remote" "$spec" || die "Could not git push '$remote' '$spec'"
 	fi
 done
