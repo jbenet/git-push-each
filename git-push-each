@@ -33,6 +33,12 @@ EXAMPLE
 # defaults
 remote="origin"
 prefix="gpe-"
+
+die() {
+	echo >&2 "$@"
+	exit 1
+}
+
 clean=0
 dryrun=0
 
@@ -50,7 +56,7 @@ while [ $# -gt 0 ]; do
 		dryrun=1
 		shift ;;
 	--*)
-		die "$(eval_gettext "unrecognised option: '\$arg'")" ;;
+		die "Unrecognised option: '$arg'\n$usage" ;;
 	*)
 		# get args
 		case "$#" in
