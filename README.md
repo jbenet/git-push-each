@@ -13,7 +13,13 @@ Because sometimes you need to trick Github and CI servers to test every commit i
 ```
 git clone https://github.com/jbenet/git-push-each
 cd git-push-each
-sudo mv git-push-each $(git --exec-path)
+sudo cp git-push-each $(git --exec-path)
+```
+
+or instead of the last command above:
+
+```
+sudo ./install.sh
 ```
 
 ## Usage
