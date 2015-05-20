@@ -46,6 +46,9 @@ while [ $# -gt 0 ]; do
 	# get options
 	arg="$1"
 	case "$arg" in
+  -h)
+    echo "$usage"
+    exit 0 ;;
 	--help)
 		echo "$usage"
 		exit 0 ;;
